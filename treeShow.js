@@ -1,5 +1,6 @@
 // var ws281x = require('ws281x-native');
 const ws281x = require('rpi-ws281x-native');
+var fadeEffect = require('./fadeEffect.js');
 
 var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
     pixelData = new Uint32Array(NUM_LEDS);
@@ -14,8 +15,10 @@ process.on('SIGINT', function () {
 
 console.log('Press <ctrl>+C to exit.');
 
-effect1();
+// effect1();
+fadeEffect.run(ws281x,pixelData,NUM_LEDS);
 //}
+
 
 function effect1(){
 	rain(rgb2Int(0,255,0),rgb2Int(255,0,0),10,50,30,effect2);
