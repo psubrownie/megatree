@@ -4,8 +4,10 @@ var fadeEffect = require('./fadeEffect.js');
 
 var NUM_LEDS = parseInt(process.argv[2], 10) || 10,
     pixelData = new Uint32Array(NUM_LEDS);
+var GM = parseInt(process.argv[3], 10) || 255;
 
 ws281x.init(NUM_LEDS);
+ws281x.setBrightness(GM);
 
 // ---- trap the SIGINT and reset before exit
 process.on('SIGINT', function () {
